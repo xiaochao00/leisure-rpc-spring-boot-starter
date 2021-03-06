@@ -1,7 +1,9 @@
 package child.leisure.rpc.client.discovery;
 
+import child.leisure.rpc.common.serializer.ZookeeperSerializer;
 import child.leisure.rpc.common.service.Service;
 import child.leisure.rpc.common.constant.LeisureRpcConstant;
+import child.leisure.rpc.common.util.LeisureRpcUtil;
 import com.alibaba.fastjson.JSON;
 import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.serialize.SerializableSerializer;
@@ -28,12 +30,12 @@ public class ZookeeperServiceDiscoverer implements ServiceDiscoverer {
 
     public ZookeeperServiceDiscoverer(String zkAddress) {
         this.zkClient = new ZkClient(zkAddress);
-        this.zkClient.setZkSerializer(new SerializableSerializer());
+        this.zkClient.setZkSerializer(new ZookeeperSerializer());
     }
 
     @Override
     public List<Service> getService(String name) {
-        String servicePath = String.join(LeisureRpcConstant.PATH_DELIMITER, LeisureRpcConstant.ZK_SERVICE_PATH, name, "service");
+        String servicePath = LeisureRpcUtil.combineServicePath(name);
         List<String> children = zkClient.getChildren(servicePath);
         return Optional.ofNullable(children)
                 .orElse(new ArrayList<>())
@@ -44,7 +46,7 @@ public class ZookeeperServiceDiscoverer implements ServiceDiscoverer {
 
     private Service zkChildToService(String zkChild) {
         try {
-            zkChild = URLDecoder.decode(zkChild, LeisureRpcConstant.ENCODE_CODE);
+            zkChild = URLDecoder.decode(zkChild, LeisureRpcConstant.UTF8_CODE);
             return JSON.parseObject(zkChild, Service.class);
         } catch (UnsupportedEncodingException e) {
             logger.error("Fail when transform zkNode:{} with error:{}.", zkChild, e.getMessage(), e);

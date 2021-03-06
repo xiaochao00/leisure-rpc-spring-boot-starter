@@ -19,7 +19,7 @@ public class LeisureRpcConstant {
     /**
      * 编码
      */
-    public static final String ENCODE_CODE = StandardCharsets.UTF_8.toString();
+    public static final String UTF8_CODE = StandardCharsets.UTF_8.toString();
 
     /**
      * 路径分隔符

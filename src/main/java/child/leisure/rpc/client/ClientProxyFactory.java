@@ -88,4 +88,36 @@ public class ClientProxyFactory {
             return response.getReturnValue();
         }
     }
+
+    public ServiceDiscoverer getServiceDiscoverer() {
+        return serviceDiscoverer;
+    }
+
+    public void setServiceDiscoverer(ServiceDiscoverer serviceDiscoverer) {
+        this.serviceDiscoverer = serviceDiscoverer;
+    }
+
+    public Map<String, MessageProtocol> getSupportMessageProtocols() {
+        return supportMessageProtocols;
+    }
+
+    public void setSupportMessageProtocols(Map<String, MessageProtocol> supportMessageProtocols) {
+        this.supportMessageProtocols = supportMessageProtocols;
+    }
+
+    public NetClient getNetClient() {
+        return netClient;
+    }
+
+    public void setNetClient(NetClient netClient) {
+        this.netClient = netClient;
+    }
+
+    public Map<Class<?>, Object> getObjectMap() {
+        return objectMap;
+    }
+
+    public void setObjectMap(Map<Class<?>, Object> objectMap) {
+        this.objectMap = objectMap;
+    }
 }
