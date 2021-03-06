@@ -7,6 +7,7 @@ import child.leisure.rpc.common.util.LeisureRpcUtil;
 import com.alibaba.fastjson.JSON;
 import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.serialize.SerializableSerializer;
+import org.apache.zookeeper.KeeperException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

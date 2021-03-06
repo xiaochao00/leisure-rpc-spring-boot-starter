@@ -35,12 +35,12 @@ public class ZookeeperExportServiceRegister extends DefaultServiceRegister imple
     }
 
     @Override
-    public void register(ServiceObject serviceObject) throws Exception {
-        super.register(serviceObject);
+    public void register(ServiceObject so) throws Exception {
+        super.register(so);
         Service service = new Service();
         String host = InetAddress.getLocalHost().getHostAddress();
         String address = LeisureRpcUtil.combineServiceAddress(host, this.port);
-        service.setName(service.getName());
+        service.setName(so.getClazz().getName());
         service.setAddress(address);
         service.setProtocol(this.protocol);
 

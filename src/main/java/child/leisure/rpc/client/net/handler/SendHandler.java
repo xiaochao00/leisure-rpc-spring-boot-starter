@@ -62,12 +62,15 @@ public class SendHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
+        logger.info("channel read complete.");
         ctx.flush();
+        // 如果服务端报错返回，会造成此处请求卡住的情况
+        this.cdl.countDown();
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        logger.error("Exception occurred:{}.", cause.getMessage(), cause);
+        logger.error("Exception occurred in sendHandler:{}.", cause.getMessage(), cause);
         ctx.close();
     }
 
