@@ -16,12 +16,12 @@ public class LeisureRpcProperty {
     /**
      * 服务注册中心
      */
-    private String registerAddress = "127.0.0.1:2128";
+    private String registerAddress = "127.0.0.1:2182";
 
     /**
      * 服务端暴露的端口号
      */
-    private Integer serverPort;
+    private Integer serverPort = 19000;
 
     /**
      * 服务协议

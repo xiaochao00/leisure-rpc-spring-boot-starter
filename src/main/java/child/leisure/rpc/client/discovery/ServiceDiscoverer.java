@@ -9,5 +9,5 @@ public interface ServiceDiscoverer {
      * 得到远端服务列表
      * @return 服务列表
      */
-    List<Service> getService(String name);
+    List<Service> getServices(String name);
 }

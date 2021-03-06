@@ -34,7 +34,7 @@ public class ZookeeperServiceDiscoverer implements ServiceDiscoverer {
     }
 
     @Override
-    public List<Service> getService(String name) {
+    public List<Service> getServices(String name) {
         String servicePath = LeisureRpcUtil.combineServicePath(name);
         List<String> children = zkClient.getChildren(servicePath);
         return Optional.ofNullable(children)

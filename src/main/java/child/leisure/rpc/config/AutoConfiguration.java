@@ -22,12 +22,11 @@ import java.util.Map;
 /**
  * Spring boot 自动配置类
  *
- * @author 东方雨倾
+ * @author shichao
  * @since 1.0.0
  */
 @Configuration
 public class AutoConfiguration {
-
     @Bean
     public DefaultRpcProcessor defaultRpcProcessor() {
         return new DefaultRpcProcessor();

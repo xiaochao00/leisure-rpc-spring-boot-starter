@@ -61,7 +61,7 @@ public class ClientProxyFactory {
             }
             // 获取服务信息
             String serviceName = this.clazz.getName();
-            List<Service> serviceList = serviceDiscoverer.getService(serviceName);
+            List<Service> serviceList = serviceDiscoverer.getServices(serviceName);
             if (serviceList == null || serviceList.isEmpty()) {
                 throw new LeisureException("Here is no provider.");
             }
