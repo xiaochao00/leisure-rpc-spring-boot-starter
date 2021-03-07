@@ -53,7 +53,7 @@ public class SendHandler extends ChannelInboundHandlerAdapter {
         logger.info("Client read the response message:{}.", msg);
         ByteBuf msgBuf = (ByteBuf) msg;
         byte[] res = new byte[msgBuf.readableBytes()];
-        msgBuf.writeBytes(res);
+        msgBuf.readBytes(res);
 
         this.readMsg = res;
         this.cdl.countDown();

@@ -42,12 +42,8 @@ public class LeisureRequest implements Serializable {
         this.method = method;
     }
 
-    public Map<String, String> getHeaders() {
-        return headers;
-    }
-
-    public void setHeaders(String key,String value) {
-        this.headers.put(key, value);
+    public void setHeaders(Map<String, String> headers) {
+        this.headers = headers;
     }
 
     public Class<?>[] getParameterTypes() {
@@ -58,12 +54,20 @@ public class LeisureRequest implements Serializable {
         this.parameterTypes = parameterTypes;
     }
 
-    public Object[] getParameters() {
-        return parameters;
-    }
-
     public void setParameters(Object[] parameters) {
         this.parameters = parameters;
+    }
+
+    public Object[] getParameters() {
+        return this.parameters;
+    }
+
+    public Map<String, String> getHeaders() {
+        return headers;
+    }
+
+    public String getHeader(String name) {
+        return this.headers == null ? null : this.headers.get(name);
     }
 
     @Override

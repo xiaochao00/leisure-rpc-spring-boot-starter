@@ -78,14 +78,15 @@ public class NettyRpcServer extends RpcServer {
             byte[] req = new byte[msgBuf.readableBytes()];
             msgBuf.readBytes(req);
             byte[] res = handler.handleRequest(req);
-            logger.info("Send response:{}.", msg);
             ByteBuf resBuf = Unpooled.buffer(res.length);
             resBuf.writeBytes(res);
-            ctx.write(resBuf);
+            logger.info("Send response:{}.", resBuf);
+            ctx.writeAndFlush(resBuf);
         }
 
         @Override
         public void channelReadComplete(ChannelHandlerContext ctx) {
+            logger.info("Channel read is complete in RpcServer.");
             ctx.flush();
         }
 
